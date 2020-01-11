@@ -19,7 +19,7 @@ allprojects {
 ```
 ```
 dependencies {
-    implementation 'com.github.memishood:FaceAware-Android:1.0'
+    implementation 'com.github.memishood:FaceAware-Android:1.1'
 }
 ```
 
@@ -27,10 +27,10 @@ dependencies {
 
 ```xml
 <tr.com.emrememis.library.FaceAware
-        android:id="@+id/faceAware"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:face_elevation="2.5"/>
+    android:id="@+id/faceAware"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:face_elevation="2.5"/>
 ```
 ## Params
 
