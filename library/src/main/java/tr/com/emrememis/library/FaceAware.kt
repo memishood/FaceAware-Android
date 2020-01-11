@@ -39,31 +39,51 @@ class FaceAware constructor(context: Context, attrs: AttributeSet?) : AppCompatI
 
     override fun setImageBitmap(bm: Bitmap?) {
         super.setImageBitmap(bm)
-        if (bm == null) { return }
-        mBitmap = bm
+        if (drawable == null) { return }
+        initializeBitmap()
     }
 
 
     override fun setImageDrawable(drawable: Drawable?) {
         super.setImageDrawable(drawable)
         if (getDrawable() == null) { return }
-        mBitmap = initializeBitmap()
+        initializeBitmap()
     }
 
     override fun setImageResource(resId: Int) {
         super.setImageResource(resId)
         if (drawable == null) { return }
-        mBitmap = initializeBitmap()
+        initializeBitmap()
     }
 
     override fun setImageURI(uri: Uri?) {
         super.setImageURI(uri)
         if (drawable == null) { return }
-        mBitmap = initializeBitmap()
+        initializeBitmap()
     }
 
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        super.onSizeChanged(w, h, oldw, oldh)
+    private fun initializeBitmap() {
+
+        if (mBitmap != null) {
+            return
+        }
+
+        val drawable :Drawable = drawable
+
+
+        val bitmap: Bitmap
+
+        when (drawable) {
+            is BitmapDrawable -> bitmap = drawable.bitmap
+            is ColorDrawable -> bitmap = Bitmap.createBitmap(2,2, Bitmap.Config.ARGB_8888)
+            else -> bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+        }
+
+        mBitmap = bitmap
+
+        if (mBitmap == null) {
+            return
+        }
 
         frame.setBitmap(mBitmap)
 
@@ -90,38 +110,17 @@ class FaceAware constructor(context: Context, attrs: AttributeSet?) : AppCompatI
         }
 
         try {
-            val bitmap = Bitmap.createBitmap(
+            val _bitmap = Bitmap.createBitmap(
                 mBitmap!!,
                 newX,
                 newY,
                 newWidth,
                 newHeight
             )
-            setImageBitmap(bitmap)
+            setImageBitmap(_bitmap)
         }catch (e: Exception) {
             e.printStackTrace()
         }
-
-
-    }
-
-    private fun initializeBitmap(): Bitmap? {
-        val drawable :Drawable = drawable
-
-
-        val bitmap: Bitmap
-
-        when (drawable) {
-            is BitmapDrawable -> return drawable.bitmap
-            is ColorDrawable -> bitmap = Bitmap.createBitmap(2,2, Bitmap.Config.ARGB_8888)
-            else -> bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
-        }
-
-        val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.width, canvas.height)
-        drawable.draw(canvas)
-
-        return bitmap
     }
 
     fun onDestroy() {
