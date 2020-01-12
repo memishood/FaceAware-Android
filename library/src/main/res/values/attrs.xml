@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FaceAware">
-        <attr name="face_elevation" format="float" />
+        <attr name="face_elevation" format="integer" />
     </declare-styleable>
 </resources>

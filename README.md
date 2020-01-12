@@ -2,7 +2,7 @@ FaceAware for Android Studio
 ========
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 <br>
-FaceAware is a auto cropper image library for Android.<br>
+FaceAware is zoom library to face for Android.<br>
 
 <img src="https://github.com/memishood/FaceAware-Android/blob/master/avatarExample.png" width=50%>
 
@@ -19,7 +19,7 @@ allprojects {
 ```
 ```
 dependencies {
-    implementation 'com.github.memishood:FaceAware-Android:1.1'
+    implementation 'com.github.memishood:FaceAware-Android:1.2'
 }
 ```
 
@@ -30,13 +30,13 @@ dependencies {
     android:id="@+id/faceAware"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:face_elevation="2.5"/>
+    app:face_elevation="25"/>
 ```
 ## Params
 
 | Params | Value |
 | :------: | :------: |
-| app:face_elevation | float (1.0> x <3.0) |
+| app:face_elevation | int |
 -------------------
 
 ## Kotlin
