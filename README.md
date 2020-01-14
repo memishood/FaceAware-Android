@@ -51,7 +51,7 @@ dependencies {
         Glide.with(this).load(R.drawable.test).into(faceAware)
 ```
 
-you can use on xml or in your code, it doesn't matter.
+do not use android:src="image", use on your code.
 
 -------------------
 ## For better understanding
