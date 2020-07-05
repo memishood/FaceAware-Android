@@ -19,7 +19,8 @@ allprojects {
 ```
 ```
 dependencies {
-    implementation 'com.github.memishood:FaceAware-Android:1.2'
+    def faceAwareVersion = "2.0.0"
+    implementation "com.github.memishood:FaceAware-Android:$faceAwareVersion"
 }
 ```
 
@@ -30,15 +31,8 @@ dependencies {
     android:id="@+id/faceAware"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:face_elevation="25"/>
+    android:src="@your_image"/>
 ```
-## Params
-
-| Params | Value |
-| :------: | :------: |
-| app:face_elevation | int |
--------------------
-
 ## Kotlin
 
 ```kotlin  
@@ -50,9 +44,6 @@ dependencies {
         //or
         Glide.with(this).load(R.drawable.test).into(faceAware)
 ```
-
-do not use android:src="image", use on your code.
-
 -------------------
 ## For better understanding
 <img src="https://github.com/memishood/FaceAware-Android/blob/master/largeExample.jpg" width=50%>
