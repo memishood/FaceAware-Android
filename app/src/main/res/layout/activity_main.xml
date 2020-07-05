@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:keepScreenOn="true">
 
     <tr.com.emrememis.library.FaceAware
         android:id="@+id/faceAware"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:layout_gravity="center"
-        app:face_elevation="25" />
+        android:layout_gravity="center" />
 
 </FrameLayout>

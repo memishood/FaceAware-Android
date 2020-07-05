@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-flags:17.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/410761b5fb76a952306ccc97db1719e6/play-services-flags-17.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/410761b5fb76a952306ccc97db1719e6/play-services-flags-17.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/005bc1f31f8a86d75996bb4a13558d34/jetified-play-services-flags-17.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/005bc1f31f8a86d75996bb4a13558d34/jetified-play-services-flags-17.0.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
