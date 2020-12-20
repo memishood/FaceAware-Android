@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.util.forEach
-import androidx.core.util.isNotEmpty
 import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.face.Face
 import com.google.android.gms.vision.face.FaceDetector
@@ -20,69 +19,62 @@ class FaceAware constructor(context: Context, attrs: AttributeSet?) : AppCompatI
 
     override fun setImageDrawable(drawable: Drawable?) {
         super.setImageDrawable(drawable)
+        drawable?.let {
+            val bitmap = when (it) {
+                is BitmapDrawable -> it.bitmap
+                is ColorDrawable -> Bitmap.createBitmap(2,2, Bitmap.Config.ARGB_8888)
+                else -> Bitmap.createBitmap(it.intrinsicWidth, it.intrinsicHeight, Bitmap.Config.ARGB_8888)
+            }
 
-        drawable ?: return
+            val frame = Frame.Builder()
+                .setBitmap(bitmap)
+                .build()
 
-        val bitmap = when (drawable) {
-            is BitmapDrawable -> drawable.bitmap
-            is ColorDrawable -> Bitmap.createBitmap(2,2, Bitmap.Config.ARGB_8888)
-            else -> Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
-        }
+            val detector = FaceDetector.Builder(context)
+                .setTrackingEnabled(false)
+                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
+                .build()
 
-        val detector = FaceDetector.Builder(context)
-            .setTrackingEnabled(false)
-            .setLandmarkType(FaceDetector.ALL_LANDMARKS)
-            .build()
-
-        val frame = Frame.Builder()
-            .setBitmap(bitmap)
-            .build()
-
-        val faces = detector.detect(frame)
-
-        if (faces.isNotEmpty()) {
+            val faces = detector.detect(frame)
 
             faces.forEach { _ , value ->
-                if (value != null) {
-                    bind(value, bitmap)
+                value?.let { face ->
+                    bind(
+                        face = face,
+                        bitmap = bitmap
+                    )
                 }
             }
 
+            detector.release()
         }
-
-        detector.release()
-
     }
 
-    private fun bind(value: Face, bitmap: Bitmap) {
-        if (value.position.y + value.height <= bitmap.height
-            && value.position.x + value.width <= bitmap.width) {
-
-            val image = Bitmap.createBitmap(
-                bitmap,
-                value.position.x.toInt(),
-                value.position.y.toInt(),
-                value.width.toInt(),
-                value.height.toInt()
+    private fun bind(face: Face, bitmap: Bitmap) {
+        if (face.position.y > 0 && face.position.x > 0
+            && face.position.y + face.height <= bitmap.height
+            && face.position.x + face.width <= bitmap.width) {
+            setImageBitmap(
+                Bitmap.createBitmap(
+                    bitmap,
+                    face.position.x.toInt(),
+                    face.position.y.toInt(),
+                    face.width.toInt(),
+                    face.height.toInt()
+                )
             )
-
-            setImageBitmap(image)
         }
     }
 
     override fun onDraw(canvas: Canvas?) {
-        canvas ?: return
-
-        val radius = (height / 2).toFloat()
-
+        val radius = (width / 2).toFloat()
+        val radius2 = (height / 2).toFloat()
         rect.left = 0f
         rect.top = 0f
         rect.right = width.toFloat()
         rect.bottom = height.toFloat()
-
-        path.addRoundRect(rect, radius, radius, Path.Direction.CW)
-        canvas.clipPath(path)
-
+        path.addRoundRect(rect, radius, radius2, Path.Direction.CW)
+        canvas?.clipPath(path)
         super.onDraw(canvas)
     }
 }
