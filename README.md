@@ -1,6 +1,7 @@
 FaceAware for Android Studio
 ========
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![](https://jitpack.io/v/memishood/FaceAware-Android.svg)](https://jitpack.io/#memishood/FaceAware-Android)
 <br>
 FaceAware is zoom library to face for Android.<br>
 
@@ -19,7 +20,7 @@ allprojects {
 ```
 ```
 dependencies {
-    def faceAwareVersion = "2.0.0"
+    def faceAwareVersion = "3.0.0"
     implementation "com.github.memishood:FaceAware-Android:$faceAwareVersion"
 }
 ```
