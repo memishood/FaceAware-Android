@@ -4,7 +4,7 @@ FaceAware for Android Studio
 <br>
 FaceAware is zoom library to face for Android.<br>
 
-<img src="https://github.com/memishood/FaceAware-Android/blob/master/avatarExample.png" width=50%>
+<img src="https://github.com/memishood/FaceAware-Android/blob/master/art/avatarExample.png" width=50%>
 
 Let me show how to use this library:
 
@@ -46,4 +46,4 @@ dependencies {
 ```
 -------------------
 ## For better understanding
-<img src="https://github.com/memishood/FaceAware-Android/blob/master/largeExample.jpg" width=50%>
+<img src="https://github.com/memishood/FaceAware-Android/blob/master/art/largeExample.jpg" width=50%>
