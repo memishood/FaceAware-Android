@@ -35,14 +35,15 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.1.0'
 }
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.memishood'
+            artifactId = 'FaceAware-Android'
+            version = '4.0.1'
+
+            afterEvaluate {
                 from components.release
-                groupId = 'com.github.memishood'
-                artifactId = 'FaceAware-Android'
-                version = '4.0.0'
             }
         }
     }

@@ -20,7 +20,7 @@ allprojects {
 ```
 ```
 dependencies {
-    def faceAwareVersion = "4.0.0"
+    def faceAwareVersion = "4.0.1"
     implementation "com.github.memishood:FaceAware-Android:$faceAwareVersion"
 }
 ```
