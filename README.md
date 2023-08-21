@@ -37,7 +37,7 @@ You might want to see example manifest file in <a href="app/src/main/AndroidMani
 ## Layout XML
 
 ```xml
-<ee.webmob.library.FaceAware
+<ee.webmob.faceaware.FaceAware
     android:id="@+id/faceAware"
     android:layout_width="250dp"
     android:layout_height="250dp"
